@@ -1,11 +1,12 @@
-function App() {
+import { Router } from "./routes/router";
 
+function App() {
   return (
     <>
-    <img src="/images/img.png" alt="" />
-   
+      <img src="/images/img.png" alt="" />
+      <Router />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
