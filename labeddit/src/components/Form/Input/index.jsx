@@ -1,7 +1,8 @@
-import TextField from "@mui/material/TextField";
+// import TextField from "@mui/material/TextField";
+import { InputText } from "./styles";
 
 function Input({ label, type }) {
-  return <TextField label={label} type={type} fullWidth />;
+  return <InputText label={label} type={type} fullWidth />;
 }
 
 export default Input;

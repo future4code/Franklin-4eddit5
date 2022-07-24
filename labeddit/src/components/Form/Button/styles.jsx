@@ -9,6 +9,8 @@ export const Primary = styled(Button)({
   fontWeight: "700",
   fontSize: "18px",
   lineHeight: "25px",
+  marginBottom: "10px",
+  marginTop: "30px",
 });
 
 export const Secondary = styled(Button)({
@@ -30,6 +32,7 @@ export const Transparent = styled(Button)({
   fontWeight: "700",
   fontSize: "18px",
   lineHeight: "25px",
+  marginTop: "10px",
 
   "&:hover": {
     background: "none",
