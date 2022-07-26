@@ -1,9 +1,10 @@
 import { Router } from "./routes/router";
+import CssBaseline from "@mui/material/CssBaseline";
 
 function App() {
   return (
     <>
-      <img src="/images/img.png" alt="" />
+      <CssBaseline />
       <Router />
     </>
   );
