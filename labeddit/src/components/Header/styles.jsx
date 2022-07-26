@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.header`
   display: grid;
   grid-auto-flow: column;
   grid-template-areas: ". logo text";
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   height: 50px;
   background: #ededed;
@@ -14,12 +15,12 @@ export const Image = styled.img`
   justify-self: center;
 `;
 
-export const TextContainer = styled.div`
+export const TextContainer = styled.nav`
   grid-area: text;
   justify-self: end;
 `;
 
-export const Text = styled.div`
+export const Text = styled.span`
   position: relative;
   right: 30px;
   font-weight: 600;
