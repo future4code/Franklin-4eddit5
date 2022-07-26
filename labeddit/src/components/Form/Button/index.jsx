@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
+import { goToCadastro, goToFeed } from "../../../routes/coordinator";
 import { Primary, Secondary, Transparent } from "./styles";
 
-export function ButtonPrimary({ name, onClick }) {
+export function ButtonPrimary({ name }) {
+  const navigate = useNavigate();
   return (
-    <Primary variant="contained" onClick={onClick}>
+    <Primary variant="contained" onClick={() => goToFeed(navigate)}>
       {name}
     </Primary>
   );
@@ -17,8 +20,9 @@ export function ButtonSecondary({ name, onClick }) {
 }
 
 export function ButtonTransparent({ name, onClick }) {
+  const navigate = useNavigate();
   return (
-    <Transparent variant="contained" onClick={onClick}>
+    <Transparent variant="contained" onClick={() => goToCadastro(navigate)}>
       {name}
     </Transparent>
   );
