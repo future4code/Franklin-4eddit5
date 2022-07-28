@@ -1,32 +1,25 @@
 import React from "react";
 import Header from "../../components/Header";
-import { BASE_URL } from "../../constantes/urls";
-import { useProtectedPage } from "../../hooks/useProtectdPage";
-import { useRequestData } from "../../hooks/useRequestData";
+import { Container, FormContainer, Form, Line, PostsContainer } from "./styles";
+import TextArea from "../../components/Form/TextArea";
+import { ButtonSecondary } from "../../components/Form/Button";
 
 export const Feed = () => {
- 
-  useProtectedPage()
-
-  const postes = useRequestData([], `${BASE_URL}/posts`)
-
-  console.log(postes);
-
   return (
-    postes.map( (post) => {
-      return (
-        <div key={post.id}> 
-          <Header LinkName={"Entrar"} />
-          <p>{post.body}</p>
-          <p>{post.title}</p>
-          <p>{post.commentCount}</p>
-          <p>{post.createdAt}</p>
-          <p>{post.username}</p>
-          <p>{post.userId}</p>
-          <p>{post.userVote}</p>
-          <p>{post.voteSum}</p>
-        </div>
-      )
-    })
-  )
+    <Container>
+      <Header LinkName={"Logout"} />
+      <FormContainer>
+        <Form>
+          <TextArea label={"Escreva seu Post..."} />
+          <ButtonSecondary name={"Postar"} />
+          <Line />
+        </Form>
+      </FormContainer>
+      <PostsContainer>
+        <div style={{ background: "grey", textAlign: "center" }}>PostCard</div>
+        <div style={{ background: "grey", textAlign: "center" }}>PostCard</div>
+        <div style={{ background: "grey", textAlign: "center" }}>PostCard</div>
+      </PostsContainer>
+    </Container>
+  );
 };
