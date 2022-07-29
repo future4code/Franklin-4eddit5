@@ -2,10 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { goToCadastro, goToFeed } from "../../../routes/coordinator";
 import { Primary, Secondary, Transparent } from "./styles";
 
-export function ButtonPrimary({ name }) {
-  const navigate = useNavigate();
+export function ButtonPrimary({ name, type }) {
   return (
-    <Primary variant="contained" onClick={() => goToFeed(navigate)}>
+    <Primary variant="contained" type={type}>
       {name}
     </Primary>
   );
