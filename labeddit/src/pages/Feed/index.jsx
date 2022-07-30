@@ -3,8 +3,11 @@ import Header from "../../components/Header";
 import { Container, FormContainer, Form, Line, PostsContainer } from "./styles";
 import TextArea from "../../components/Form/TextArea";
 import { ButtonSecondary } from "../../components/Form/Button";
+import { useProtectedPage } from "../../hooks/useProtectdPage";
 
 export const Feed = () => {
+  useProtectedPage();
+
   return (
     <Container>
       <Header LinkName={"Logout"} />
