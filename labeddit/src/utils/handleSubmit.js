@@ -3,15 +3,15 @@ import api from "../services/api";
 export function handleSubmitLogin(event, setState, navigate) {
   event.preventDefault();
 
-  const { title, message } = {
-    title: event.target[0].value,
-    message: event.target[2].value,
+  const { email, password } = {
+    email: event.target[0].value,
+    password: event.target[2].value,
   };
 
   api
     .post("users/login", {
-      title: title,
-      message: message,
+      email: email,
+      password: password,
     })
     .then((response) => {
       localStorage.setItem(
