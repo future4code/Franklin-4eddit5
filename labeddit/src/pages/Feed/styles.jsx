@@ -21,5 +21,5 @@ export const Line = styled.hr`
 export const PostsContainer = styled.div`
   display: grid;
   gap: 10px;
-  padding: 0 30px;
+  padding: 0 30px 30px;
 `;

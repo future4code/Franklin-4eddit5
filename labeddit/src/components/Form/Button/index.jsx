@@ -10,10 +10,10 @@ export function ButtonPrimary({ name, type }) {
   );
 }
 
-export function ButtonSecondary({ name, onClick }) {
+export function ButtonSecondary(props) {
   return (
-    <Secondary variant="contained" onClick={onClick}>
-      {name}
+    <Secondary {...props} variant="contained">
+      {props.name}
     </Secondary>
   );
 }
