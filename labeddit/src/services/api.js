@@ -39,9 +39,6 @@ export const cadastrar = (body, cleanFields, navigate, setIsLoading) => {
 }
 
 const api = axios.create({
-    headers: {
-        Authorization: JSON.parse(localStorage.getItem("labeddit"))?.token,
-    },
   baseURL: "https://labeddit-2.herokuapp.com/",
 });
 
