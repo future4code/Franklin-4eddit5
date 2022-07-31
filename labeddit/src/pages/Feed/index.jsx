@@ -32,7 +32,6 @@ export const Feed = () => {
         setPosts(response.data);
       })
       .catch((error) => {
-        console.log(storage, "storage");
         console.error(error);
       });
   }, []);
