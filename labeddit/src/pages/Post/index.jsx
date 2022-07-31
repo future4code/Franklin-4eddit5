@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
-import Header from "../../components/Header";
-import { Container, FormContainer, Form, Line, PostsContainer } from "./styles";
-import TextArea from "../../components/Form/TextArea";
-import { InputSecondary } from "../../components/Form/Input";
-import { ButtonSecondary } from "../../components/Form/Button";
-import { useProtectedPage } from "../../hooks/useProtectdPage";
-import { handleSubmitPost } from "../../utils/handleSubmit";
-import { Snackbar, Alert } from "@mui/material";
-import api from "../../services/api";
+import { useParams } from "react-router-dom";
 import { PostCard } from "../../components/PostCard";
+import Header from "../../components/Header";
+import api from "../../services/api";
+import {
+  Container,
+  FormContainer,
+  Form,
+  Line,
+  CommentsContainer,
+} from "./styles";
+import TextArea from "../../components/Form/TextArea";
+import { ButtonSecondary } from "../../components/Form/Button";
+import { handleSubmitComment } from "../../utils/handleSubmit";
+import { Alert, Snackbar } from "@mui/material";
 
-export const Feed = () => {
-  useProtectedPage();
-
-  const [posts, setPosts] = useState([]);
+export const Post = () => {
+  const { id } = useParams();
   const [isFail, setIsFail] = useState(false);
-  const authorization = JSON.parse(localStorage.getItem("labeddit"))?.token
+  const [comments, setComments] = useState([]);
+  const { token, post } = JSON.parse(localStorage.getItem("labeddit"));
 
   function handleClose() {
     setIsFail(false);
@@ -23,16 +27,15 @@ export const Feed = () => {
 
   useEffect(() => {
     api
-      .get("posts", {
+      .get(`posts/${id}/comments`, {
         headers: {
-          Authorization: authorization,
+          Authorization: token,
         },
       })
       .then((response) => {
-        setPosts(response.data);
+        setComments(response.data);
       })
       .catch((error) => {
-        console.log(storage, "storage");
         console.error(error);
       });
   }, []);
@@ -42,18 +45,26 @@ export const Feed = () => {
       <Header LinkName={"Logout"} />
       <Container>
         <FormContainer>
+          <PostCard
+            id={post.id}
+            username={post.username}
+            message={post.message}
+            comment={post.comment}
+          />
+
           <Form
             component={"form"}
-            onSubmit={(event) => handleSubmitPost(event, setIsFail, setPosts)}
+            onSubmit={(event) =>
+              handleSubmitComment(event, setIsFail, setComments, post.id)
+            }
           >
-            <InputSecondary label={"Título do post"} type={"text"} required />
             <TextArea label={"Escreva seu Post..."} required />
             <ButtonSecondary name={"Postar"} type={"submit"} />
             <Line />
           </Form>
         </FormContainer>
-        <PostsContainer>
-          {posts?.map((post, index) => {
+        <CommentsContainer>
+          {comments?.map((post, index) => {
             return (
               <PostCard
                 key={index}
@@ -64,7 +75,7 @@ export const Feed = () => {
               />
             );
           })}
-        </PostsContainer>
+        </CommentsContainer>
         <Snackbar
           open={isFail}
           onClose={handleClose}
@@ -72,7 +83,7 @@ export const Feed = () => {
           anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
         >
           <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-            Algo deu errado, seu post não foi publicado!
+            Algo deu errado, seu comentário não foi publicado!
           </Alert>
         </Snackbar>
       </Container>
