@@ -21,8 +21,11 @@ export const PostCard = (props) => {
 
   return (
     <S.Card>
-      <S.MessageAuthor as={Link} to={`/post/${props.id}`} onClick={handleClick}>
-        Enviado por: {props.username}
+      <S.MessageAuthor>
+        Enviado por: {props.usernameComment}
+        <Link as={Link} to={`/post/${props.id}`} onClick={handleClick}>
+          {props.username}
+        </Link>
       </S.MessageAuthor>
       <S.MessageContent>{props.message}</S.MessageContent>
       <S.Interaction>

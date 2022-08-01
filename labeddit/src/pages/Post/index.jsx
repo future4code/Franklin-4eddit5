@@ -47,7 +47,7 @@ export const Post = () => {
         <FormContainer>
           <PostCard
             id={post.id}
-            username={post.username}
+            usernameComment={post.username}
             message={post.message}
             comment={post.comment}
           />
@@ -69,7 +69,7 @@ export const Post = () => {
               <PostCard
                 key={index}
                 id={post.id}
-                username={post.username}
+                usernameComment={post.username}
                 message={post.body}
                 comment={post.commentCount}
               />
