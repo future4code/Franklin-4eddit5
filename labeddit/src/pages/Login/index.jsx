@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ButtonPrimary, ButtonTransparent } from "../../components/Form/Button";
 import Input from "../../components/Form/Input";
-import { Box, Image } from "./styles";
+import { Box, Image, ContainerImage } from "./styles";
 import { FormControl, Snackbar, Alert } from "@mui/material";
 import { handleSubmitLogin } from "../../utils/handleSubmit";
 
@@ -16,8 +16,12 @@ export const Login = () => {
 
   return (
     <Box>
-      <Image src="/images/LabEddit.png" alt="LabEddit" />
+      <ContainerImage >
+      <Image src="/images/logo-login.png" alt="LabEddit" height={142} width={152}/>
+
+      </ContainerImage>
       <FormControl
+        fullWidth
         component={"form"}
         onSubmit={(event) => handleSubmitLogin(event, setIsFail, navigate)}
       >

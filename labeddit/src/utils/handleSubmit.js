@@ -26,6 +26,34 @@ export function handleSubmitLogin(event, setState, navigate) {
     });
 }
 
+export function handleSubmitSignUp(event, setState, navigate) {
+  event.preventDefault();
+
+  const { username, email, password } = {
+    username: event.target[0].value,
+    email: event.target[2].value,
+    password: event.target[4].value,
+  };
+console.log(username, email, password);
+  api
+    .post("users/signup", {
+      username: username,
+      email: email,
+      password: password,
+    })
+    .then((response) => {
+      localStorage.setItem(
+        "labeddit",
+        JSON.stringify({ token: response.data.token })
+      );
+      navigate("/feed");
+    })
+    .catch((error) => {
+      setState(true);
+      console.error(error);
+    });
+}
+
 export function handleSubmitPost(event, setIsFail, setPosts) {
   event.preventDefault();
 
