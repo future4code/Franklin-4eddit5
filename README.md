@@ -1,2 +1,2 @@
 ## Labeddit
-### Link Surge https://icy-thrill.surge.sh/
+### Link Surge https://uninterested-feast.surge.sh
